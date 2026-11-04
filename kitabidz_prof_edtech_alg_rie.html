@@ -1,0 +1,944 @@
+<!DOCTYPE html>
+<html lang="fr" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KITABIDZ PROF - Conforme au Programme Officiel Algérien 2026/2027</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        dzgreen: {
+                            DEFAULT: '#0B8043',
+                            dark: '#055C32',
+                            light: '#E6F4EA',
+                            accent: '#109D59'
+                        },
+                        dzred: {
+                            DEFAULT: '#D32F2F',
+                            dark: '#B71C1C',
+                            light: '#FFEBEE'
+                        },
+                        dzgold: {
+                            DEFAULT: '#F59E0B',
+                            light: '#FEF3C7'
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'system-ui', '-apple-system', 'sans-serif'],
+                        arabic: ['Amiri', 'serif']
+                    }
+                }
+            }
+        }
+    </script>
+    <!-- Google Fonts for Arabic & English UI -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        .gradient-dz {
+            background: linear-gradient(135deg, #055C32 0%, #0B8043 50%, #086837 100%);
+        }
+        .text-gradient-dz {
+            background: linear-gradient(135deg, #0B8043 0%, #055C32 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .pulse-slow {
+            animation: pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+        }
+        @keyframes scan {
+            0% { top: 0%; }
+            50% { top: 90%; }
+            100% { top: 0%; }
+        }
+        .scan-line {
+            position: absolute;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, transparent, #109D59, #F59E0B, #109D59, transparent);
+            box-shadow: 0 0 15px #109D59;
+            animation: scan 2.5s ease-in-out infinite;
+        }
+        .dropzone-active {
+            border-color: #0B8043 !important;
+            background-color: #E6F4EA !important;
+        }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800 font-sans antialiased min-h-screen flex flex-col justify-between">
+
+    <!-- TOP ANNOUNCEMENT BAR -->
+    <div class="bg-emerald-950 text-emerald-300 text-xs py-2 px-4 text-center font-medium flex items-center justify-center gap-2 border-b border-emerald-900">
+        <span class="inline-block w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+        <span>Mise à jour Rentrée 2026/2027 : 100% conforme aux manuels officiels du Ministère de l'Éducation Nationale 🇩🇿</span>
+    </div>
+
+    <!-- MAIN NAVBAR -->
+    <header class="sticky top-0 z-40 bg-white/90 backdrop-blur-md border-b border-slate-200">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+            <!-- LOGO KITABIDZ PROF -->
+            <a href="#" class="flex items-center gap-3 group">
+                <div class="w-12 h-12 rounded-2xl bg-dzgreen text-white flex items-center justify-center shadow-lg shadow-dzgreen/20 group-hover:scale-105 transition-transform duration-300 relative overflow-hidden">
+                    <div class="absolute inset-0 bg-white/10 opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                    <i data-lucide="book-open-check" class="w-7 h-7"></i>
+                    <div class="absolute top-1 right-1 w-2.5 h-2.5 bg-dzgold rounded-full border-2 border-dzgreen"></div>
+                </div>
+                <div>
+                    <div class="flex items-center gap-2">
+                        <span class="font-extrabold text-xl tracking-tight text-slate-900">KITABIDZ</span>
+                        <span class="bg-dzgreen/10 text-dzgreen text-xs font-bold px-2 py-0.5 rounded border border-dzgreen/20">PROF</span>
+                    </div>
+                    <p class="text-[11px] text-slate-500 font-medium">L'explicateur de devoirs officiel 🇩🇿</p>
+                </div>
+            </a>
+
+            <!-- NAVIGATION & LIVE APP LINK -->
+            <div class="hidden md:flex items-center gap-6 text-sm font-medium">
+                <a href="#niveaux" class="text-slate-600 hover:text-dzgreen transition">Les 12 Niveaux</a>
+                <a href="#simulateur" class="text-slate-600 hover:text-dzgreen transition">Simulateur Photo</a>
+                <a href="#conformite" class="text-slate-600 hover:text-dzgreen transition">Conformité</a>
+                <a href="#roadmap" class="text-slate-600 hover:text-dzgreen transition">Web ➔ SD Box</a>
+            </div>
+
+            <!-- CTA BUTTON LIVE APP -->
+            <div class="flex items-center gap-3">
+                <a href="https://kitabidz-study-pro.base44.app" target="_blank" rel="noopener" class="hidden sm:inline-flex items-center gap-2 px-3 py-1.5 rounded-full text-xs font-semibold bg-emerald-50 text-dzgreen border border-dzgreen/30 hover:bg-emerald-100 transition">
+                    <span class="w-2 h-2 rounded-full bg-dzgreen animate-ping"></span>
+                    kitabidz-study-pro.base44.app
+                </a>
+                <a href="https://kitabidz-study-pro.base44.app" target="_blank" rel="noopener" class="px-5 py-2.5 rounded-xl bg-dzgreen hover:bg-dzgreen-dark text-white font-semibold text-sm shadow-md shadow-dzgreen/30 hover:shadow-lg transition flex items-center gap-2">
+                    <span>Accéder à l'App</span>
+                    <i data-lucide="external-link" class="w-4 h-4"></i>
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- 1. HERO SECTION -->
+    <section class="relative pt-12 pb-20 md:py-24 overflow-hidden bg-gradient-to-b from-emerald-50/50 via-white to-slate-50">
+        <!-- Decorative subtle SVG shapes -->
+        <div class="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-7xl h-full pointer-events-none opacity-40">
+            <div class="absolute top-12 left-10 w-72 h-72 bg-emerald-200/50 rounded-full blur-3xl"></div>
+            <div class="absolute bottom-10 right-10 w-96 h-96 bg-amber-200/40 rounded-full blur-3xl"></div>
+        </div>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="text-center max-w-3xl mx-auto">
+                <!-- Programme Badge -->
+                <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white border border-emerald-200 shadow-sm mb-6 animate-bounce">
+                    <span class="text-lg">🇩🇿</span>
+                    <span class="text-xs font-bold uppercase tracking-wider text-dzgreen">12 NIVEAUX • Programme Officiel 2026 / 2027</span>
+                    <span class="px-2 py-0.5 rounded-full bg-emerald-100 text-dzgreen-dark text-[10px] font-extrabold">GARANTI SANS HORS-PROGRAMME</span>
+                </div>
+
+                <!-- Main Headline -->
+                <h1 class="text-3xl sm:text-5xl font-extrabold text-slate-900 tracking-tight leading-tight mb-6">
+                    L'application qui explique les devoirs <span class="text-gradient-dz underline decoration-dzgold/60 decoration-wavy">UNIQUEMENT</span> à partir du livre scolaire officiel.
+                </h1>
+
+                <!-- Subtitle -->
+                <p class="text-lg text-slate-600 mb-8 leading-relaxed">
+                    Fini le stress des révisions à la maison. Vos enfants scannent une page du livre algérien, <strong>KITABIDZ PROF</strong> explique la solution étape par étape avec la voix pédagogique en Darija et Français.
+                </p>
+
+                <!-- Hero CTA Buttons -->
+                <div class="flex flex-col sm:flex-row items-center justify-center gap-4 mb-10">
+                    <a href="https://kitabidz-study-pro.base44.app" target="_blank" class="w-full sm:w-auto px-8 py-4 rounded-xl bg-dzgreen hover:bg-dzgreen-dark text-white font-bold text-base shadow-xl shadow-dzgreen/25 hover:scale-105 transition-all flex items-center justify-center gap-3">
+                        <i data-lucide="play-circle" class="w-5 h-5"></i>
+                        <span>Ouvrir l'application Web Gratuitement</span>
+                    </a>
+                    <a href="#simulateur" class="w-full sm:w-auto px-6 py-4 rounded-xl bg-white hover:bg-slate-100 text-slate-700 font-semibold text-base border border-slate-300 shadow-sm transition flex items-center justify-center gap-2">
+                        <i data-lucide="camera" class="w-5 h-5 text-dzgreen"></i>
+                        <span>Tester le simulateur photo</span>
+                    </a>
+                </div>
+
+                <!-- Mini Key Features badges -->
+                <div class="pt-6 border-t border-slate-200/80 grid grid-cols-2 sm:grid-cols-4 gap-4 text-left">
+                    <div class="flex items-center gap-3 bg-white p-3 rounded-xl border border-slate-100 shadow-xs">
+                        <div class="p-2 bg-emerald-100 rounded-lg text-dzgreen"><i data-lucide="book-open" class="w-5 h-5"></i></div>
+                        <div><p class="text-xs font-bold text-slate-800">Manuels 2026/27</p><p class="text-[11px] text-slate-500">100% Conformes</p></div>
+                    </div>
+                    <div class="flex items-center gap-3 bg-white p-3 rounded-xl border border-slate-100 shadow-xs">
+                        <div class="p-2 bg-amber-100 rounded-lg text-amber-600"><i data-lucide="mic" class="w-5 h-5"></i></div>
+                        <div><p class="text-xs font-bold text-slate-800">Explication Voix</p><p class="text-[11px] text-slate-500">Darija & Français</p></div>
+                    </div>
+                    <div class="flex items-center gap-3 bg-white p-3 rounded-xl border border-slate-100 shadow-xs">
+                        <div class="p-2 bg-blue-100 rounded-lg text-blue-600"><i data-lucide="shield-check" class="w-5 h-5"></i></div>
+                        <div><p class="text-xs font-bold text-slate-800">Enseignants Retraités</p><p class="text-[11px] text-slate-500">Contrôlé et Validé</p></div>
+                    </div>
+                    <div class="flex items-center gap-3 bg-white p-3 rounded-xl border border-slate-100 shadow-xs">
+                        <div class="p-2 bg-rose-100 rounded-lg text-dzred"><i data-lucide="wifi-off" class="w-5 h-5"></i></div>
+                        <div><p class="text-xs font-bold text-slate-800">Option SD Hors-Ligne</p><p class="text-[11px] text-slate-500">Livraison 58 Wilayas</p></div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- 2. GRILLE INTERACTIVE DES 12 NIVEAUX ALGERIENS -->
+    <section id="niveaux" class="py-16 bg-white border-y border-slate-200">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-2xl mx-auto mb-12">
+                <h2 class="text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight">
+                    Sélectionnez le niveau de votre enfant
+                </h2>
+                <p class="text-slate-600 mt-2 text-sm sm:text-base">
+                    Tous les programmes officiels algériens du Primaire, Moyen (BEM) et Secondaire (BAC). Cliquez pour voir les matières et exercices types.
+                </p>
+            </div>
+
+            <!-- TAB / LEVEL CARDS GRID -->
+            <div class="space-y-8">
+
+                <!-- PRIMAIRE (AP) -->
+                <div>
+                    <h3 class="text-xs font-extrabold uppercase tracking-widest text-dzgreen mb-3 flex items-center gap-2">
+                        <span class="w-2.5 h-2.5 rounded-full bg-dzgreen"></span> Cycle Primaire (ابتدائي)
+                    </h3>
+                    <div class="grid grid-cols-2 sm:grid-cols-5 gap-3">
+                        <button onclick="selectLevel('1AP')" id="btn-1AP" class="level-btn active p-4 rounded-xl border-2 border-dzgreen bg-emerald-50 text-left transition relative overflow-hidden group">
+                            <span class="font-extrabold text-lg text-dzgreen group-hover:text-dzgreen-dark">1AP</span>
+                            <p class="text-xs text-slate-600 font-medium">1ère Année Prim.</p>
+                        </button>
+                        <button onclick="selectLevel('2AP')" id="btn-2AP" class="level-btn p-4 rounded-xl border-2 border-slate-200 bg-white hover:border-slate-300 text-left transition relative overflow-hidden group">
+                            <span class="font-extrabold text-lg text-slate-800">2AP</span>
+                            <p class="text-xs text-slate-500 font-medium">2ème Année Prim.</p>
+                        </button>
+                        <button onclick="selectLevel('3AP')" id="btn-3AP" class="level-btn p-4 rounded-xl border-2 border-slate-200 bg-white hover:border-slate-300 text-left transition relative overflow-hidden group">
+                            <span class="font-extrabold text-lg text-slate-800">3AP</span>
+                            <p class="text-xs text-slate-500 font-medium">3ème Année Prim.</p>
+                        </button>
+                        <button onclick="selectLevel('4AP')" id="btn-4AP" class="level-btn p-4 rounded-xl border-2 border-slate-200 bg-white hover:border-slate-300 text-left transition relative overflow-hidden group">
+                            <span class="font-extrabold text-lg text-slate-800">4AP</span>
+                            <p class="text-xs text-slate-500 font-medium">4ème Année Prim.</p>
+                        </button>
+                        <button onclick="selectLevel('5AP')" id="btn-5AP" class="level-btn col-span-2 sm:col-span-1 p-4 rounded-xl border-2 border-slate-200 bg-white hover:border-slate-300 text-left transition relative overflow-hidden group">
+                            <span class="font-extrabold text-lg text-slate-800">5AP</span>
+                            <p class="text-xs text-slate-500 font-medium">5ème Année Prim.</p>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- MOYEN (AM / BEM) -->
+                <div>
+                    <h3 class="text-xs font-extrabold uppercase tracking-widest text-amber-600 mb-3 flex items-center gap-2">
+                        <span class="w-2.5 h-2.5 rounded-full bg-amber-500"></span> Cycle Moyen - BEM (متوسط)
+                    </h3>
+                    <div class="grid grid-cols-2 sm:grid-cols-4 gap-3">
+                        <button onclick="selectLevel('1AM')" id="btn-1AM" class="level-btn p-4 rounded-xl border-2 border-slate-200 bg-white hover:border-slate-300 text-left transition group">
+                            <span class="font-extrabold text-lg text-slate-800">1AM</span>
+                            <p class="text-xs text-slate-500 font-medium">1ère Année Moyen</p>
+                        </button>
+                        <button onclick="selectLevel('2AM')" id="btn-2AM" class="level-btn p-4 rounded-xl border-2 border-slate-200 bg-white hover:border-slate-300 text-left transition group">
+                            <span class="font-extrabold text-lg text-slate-800">2AM</span>
+                            <p class="text-xs text-slate-500 font-medium">2ème Année Moyen</p>
+                        </button>
+                        <button onclick="selectLevel('3AM')" id="btn-3AM" class="level-btn p-4 rounded-xl border-2 border-slate-200 bg-white hover:border-slate-300 text-left transition group">
+                            <span class="font-extrabold text-lg text-slate-800">3AM</span>
+                            <p class="text-xs text-slate-500 font-medium">3ème Année Moyen</p>
+                        </button>
+                        <button onclick="selectLevel('4AM')" id="btn-4AM" class="level-btn p-4 rounded-xl border-2 border-slate-200 bg-white hover:border-slate-300 text-left transition group">
+                            <div class="flex justify-between items-center">
+                                <span class="font-extrabold text-lg text-slate-800">4AM</span>
+                                <span class="px-1.5 py-0.5 rounded text-[10px] bg-amber-100 text-amber-700 font-bold">BEM</span>
+                            </div>
+                            <p class="text-xs text-slate-500 font-medium">Brevet (BEM 2027)</p>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- SECONDAIRE (AS / BAC) -->
+                <div>
+                    <h3 class="text-xs font-extrabold uppercase tracking-widest text-blue-600 mb-3 flex items-center gap-2">
+                        <span class="w-2.5 h-2.5 rounded-full bg-blue-600"></span> Cycle Secondaire - BAC (ثانوي)
+                    </h3>
+                    <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
+                        <button onclick="selectLevel('1AS')" id="btn-1AS" class="level-btn p-4 rounded-xl border-2 border-slate-200 bg-white hover:border-slate-300 text-left transition group">
+                            <span class="font-extrabold text-lg text-slate-800">1AS</span>
+                            <p class="text-xs text-slate-500 font-medium">Tronc Commun Sci / Lettres</p>
+                        </button>
+                        <button onclick="selectLevel('2AS')" id="btn-2AS" class="level-btn p-4 rounded-xl border-2 border-slate-200 bg-white hover:border-slate-300 text-left transition group">
+                            <span class="font-extrabold text-lg text-slate-800">2AS</span>
+                            <p class="text-xs text-slate-500 font-medium">Filières Spécialisées</p>
+                        </button>
+                        <button onclick="selectLevel('3AS')" id="btn-3AS" class="level-btn p-4 rounded-xl border-2 border-slate-200 bg-white hover:border-slate-300 text-left transition group">
+                            <div class="flex justify-between items-center">
+                                <span class="font-extrabold text-lg text-slate-800">3AS</span>
+                                <span class="px-1.5 py-0.5 rounded text-[10px] bg-blue-100 text-blue-700 font-bold">BAC</span>
+                            </div>
+                            <p class="text-xs text-slate-500 font-medium">Baccalauréat 2027</p>
+                        </button>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- DYNAMIC LEVEL DISPLAY PANEL -->
+            <div id="levelDisplayPanel" class="mt-8 bg-slate-900 text-white rounded-2xl p-6 sm:p-8 shadow-2xl relative overflow-hidden transition-all duration-300 border border-slate-800">
+                <div class="flex flex-col lg:flex-row lg:items-center justify-between gap-6">
+                    <div>
+                        <div class="flex items-center gap-3 mb-2">
+                            <span id="displayLevelTag" class="px-3 py-1 rounded-full bg-emerald-500/20 text-emerald-400 border border-emerald-500/40 text-xs font-mono font-bold">Niveau Sélectionné : 1AP</span>
+                            <span class="text-xs text-slate-400 font-mono">ID Manuel : DZ-MIN-2026</span>
+                        </div>
+                        <h3 id="displayLevelTitle" class="text-2xl font-bold text-white">Programme 1ère Année Primaire (1AP)</h3>
+                        <p class="text-slate-400 text-sm mt-1">Livres de classe officiels indexés page par page avec corrigés expliqués en Darija.</p>
+                    </div>
+
+                    <button onclick="openExerciseModal()" class="px-6 py-3 bg-dzgreen hover:bg-dzgreen-dark text-white text-sm font-bold rounded-xl shadow-lg flex items-center justify-center gap-2 transition hover:scale-105 shrink-0">
+                        <i data-lucide="eye" class="w-4 h-4"></i>
+                        <span>Voir exercice type du livre</span>
+                    </button>
+                </div>
+
+                <!-- 3 Key Subjects per Level -->
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mt-8 pt-6 border-t border-slate-800" id="subjectsContainer">
+                    <!-- Dynamic subject cards injected here -->
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 3. SIMULATEUR PHOTO (DEMO INTERACTIVE) -->
+    <section id="simulateur" class="py-16 bg-slate-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-2xl mx-auto mb-12">
+                <span class="px-3 py-1 rounded-full bg-emerald-100 text-dzgreen text-xs font-bold uppercase tracking-wider">Simulateur Temps Réel</span>
+                <h2 class="text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight mt-3">
+                    Testez la détection d'un exercice de livre
+                </h2>
+                <p class="text-slate-600 mt-2 text-sm">
+                    Déposez une photo ou utilisez notre exemple type pour voir comment KITABIDZ PROF retrouve le manuel et explique oralement la solution.
+                </p>
+            </div>
+
+            <div class="max-w-4xl mx-auto bg-white rounded-2xl shadow-xl border border-slate-200 overflow-hidden grid grid-cols-1 md:grid-cols-2">
+                
+                <!-- Left: Drag & Drop Area -->
+                <div class="p-6 sm:p-8 border-b md:border-b-0 md:border-r border-slate-200 flex flex-col justify-between">
+                    <div>
+                        <h3 class="font-bold text-slate-900 mb-2 flex items-center gap-2">
+                            <i data-lucide="camera" class="w-5 h-5 text-dzgreen"></i>
+                            1. Déposez la photo de l'exercice
+                        </h3>
+                        <p class="text-xs text-slate-500 mb-6">Glissez une photo de la page du livre scolaire ou sélectionnez un fichier.</p>
+
+                        <div id="dropzone" class="border-2 border-dashed border-slate-300 rounded-xl p-6 text-center hover:border-dzgreen transition cursor-pointer bg-slate-50/50 flex flex-col items-center justify-center min-h-[220px] relative overflow-hidden" onclick="triggerFileUpload()">
+                            
+                            <!-- Scanner animation line (hidden by default) -->
+                            <div id="scannerLine" class="scan-line hidden"></div>
+
+                            <input type="file" id="fileInput" class="hidden" accept="image/*" onchange="handleFileSelect(event)">
+                            
+                            <div id="dropzoneContent">
+                                <div class="w-14 h-14 rounded-full bg-emerald-100 text-dzgreen flex items-center justify-center mx-auto mb-3">
+                                    <i data-lucide="upload-cloud" class="w-7 h-7"></i>
+                                </div>
+                                <p class="text-sm font-semibold text-slate-700">Déposez la photo de l'exercice ici</p>
+                                <p class="text-xs text-slate-400 mt-1">ou cliquez pour choisir dans votre galerie</p>
+                                <span class="mt-4 inline-block px-3 py-1 bg-white border border-slate-200 rounded-lg text-[11px] text-slate-600 font-medium shadow-xs">Formats: JPG, PNG (Max 10MB)</span>
+                            </div>
+
+                            <!-- Preview uploaded Image -->
+                            <div id="imagePreview" class="hidden w-full h-full absolute inset-0 bg-slate-900 flex items-center justify-center p-2">
+                                <img id="uploadedImg" src="" class="max-h-full max-w-full object-contain rounded" alt="Exercice scanné">
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Preset test buttons -->
+                    <div class="mt-6">
+                        <p class="text-[11px] font-bold text-slate-400 uppercase tracking-wider mb-2">Ou essayez un exemple rapide :</p>
+                        <div class="flex gap-2">
+                            <button onclick="loadSampleExercise('math')" class="flex-1 py-2 px-3 text-xs bg-slate-100 hover:bg-emerald-50 hover:text-dzgreen text-slate-700 font-medium rounded-lg border border-slate-200 transition text-center">
+                                📐 Maths 4AP
+                            </button>
+                            <button onclick="loadSampleExercise('arabic')" class="flex-1 py-2 px-3 text-xs bg-slate-100 hover:bg-emerald-50 hover:text-dzgreen text-slate-700 font-medium rounded-lg border border-slate-200 transition text-center">
+                                📖 Arabe 2AM
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right: OCR Analysis Result & Audio Darija Player -->
+                <div class="p-6 sm:p-8 bg-slate-900 text-white flex flex-col justify-between">
+                    <div>
+                        <div class="flex items-center justify-between mb-4">
+                            <span class="text-xs font-mono px-2.5 py-1 rounded bg-slate-800 text-emerald-400 border border-slate-700">STATUT ANALYSE OCR</span>
+                            <span id="analysisBadge" class="text-xs font-bold text-amber-400 flex items-center gap-1">
+                                <i data-lucide="clock" class="w-3.5 h-3.5"></i> En attente...
+                            </span>
+                        </div>
+
+                        <!-- Detected Book Card -->
+                        <div class="bg-slate-800/80 rounded-xl p-4 border border-slate-700 mb-6">
+                            <div class="text-xs text-slate-400 font-mono mb-1">LIVRE SCOLAIRE DÉTECTÉ</div>
+                            <h4 id="detectedBookTitle" class="font-bold text-white text-base">Aucun document chargé</h4>
+                            <p id="detectedExerciseText" class="text-xs text-slate-300 mt-2 italic bg-slate-900/50 p-2.5 rounded border border-slate-700/50">
+                                Veuillez charger une image ou sélectionner un exemple pour démarrer l'explication.
+                            </p>
+                        </div>
+
+                        <!-- Solution Breakdown -->
+                        <div class="space-y-3">
+                            <h5 class="text-xs font-bold uppercase tracking-wider text-slate-400">Étapes d'explication pédagogique :</h5>
+                            <div id="solutionSteps" class="text-xs space-y-2 text-slate-300">
+                                <p class="text-slate-500 italic">En attente du scan...</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Audio Darija Web Speech Player -->
+                    <div class="mt-6 pt-6 border-t border-slate-800">
+                        <div class="flex items-center justify-between mb-2">
+                            <span class="text-xs font-semibold text-slate-300 flex items-center gap-1.5">
+                                <i data-lucide="volume-2" class="w-4 h-4 text-emerald-400"></i> Explication en Voix Darija Pédagogique
+                            </span>
+                            <span class="text-[10px] text-emerald-400 font-mono">Web Speech API</span>
+                        </div>
+
+                        <button id="playAudioBtn" onclick="playSpeechExplanation()" disabled class="w-full py-3 px-4 bg-emerald-600 hover:bg-emerald-500 disabled:bg-slate-800 disabled:text-slate-600 text-white font-bold rounded-xl shadow-lg flex items-center justify-center gap-2 transition">
+                            <i data-lucide="play" class="w-4 h-4"></i>
+                            <span id="audioBtnText">Écouter l'explication vocale</span>
+                        </button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- 4. BADGE CONFIANCE ET CONFORMITE MINISTÉRIELLE -->
+    <section id="conformite" class="py-16 bg-white border-y border-slate-200">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="bg-gradient-to-br from-slate-900 to-emerald-950 rounded-3xl p-8 sm:p-12 text-white relative overflow-hidden shadow-2xl">
+                <!-- Background Seal Watermark -->
+                <div class="absolute -right-10 -bottom-10 opacity-10 pointer-events-none">
+                    <i data-lucide="award" class="w-96 h-96 text-white"></i>
+                </div>
+
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center relative z-10">
+                    <div class="lg:col-span-8">
+                        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-500/20 text-emerald-300 border border-emerald-500/30 text-xs font-bold uppercase tracking-wider mb-4">
+                            <i data-lucide="shield-check" class="w-4 h-4"></i> Garantie Pédagogique Sans Risque
+                        </div>
+                        <h2 class="text-2xl sm:text-4xl font-extrabold text-white tracking-tight mb-4">
+                            Validé par une enseignante retraitée – Contrôlé & Validé 2026
+                        </h2>
+                        <p class="text-slate-300 text-sm sm:text-base leading-relaxed mb-6">
+                            Chaque réponse générée par KITABIDZ PROF est vérifiée par notre comité d'inspecteurs et d'enseignants algériens retraités. Nous garantissons qu'aucune notion hors du livre officiel distribué dans les écoles ne sera présentée à votre enfant.
+                        </p>
+
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                            <div class="flex items-start gap-3 bg-slate-800/60 p-4 rounded-xl border border-slate-700">
+                                <div class="p-2 bg-emerald-500/20 text-emerald-400 rounded-lg"><i data-lucide="check-circle-2" class="w-5 h-5"></i></div>
+                                <div>
+                                    <h4 class="font-bold text-sm text-white">Indexation Page par Page</h4>
+                                    <p class="text-xs text-slate-400">Correspondance exacte avec le numéro de page du livre physique.</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start gap-3 bg-slate-800/60 p-4 rounded-xl border border-slate-700">
+                                <div class="p-2 bg-amber-500/20 text-amber-400 rounded-lg"><i data-lucide="lock" class="w-5 h-5"></i></div>
+                                <div>
+                                    <h4 class="font-bold text-sm text-white">Zéro Contenu Inapproprié</h4>
+                                    <p class="text-xs text-slate-400">Environnement 100% sécurisé et adapté à la culture algérienne.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Official Stamp Badge Visual -->
+                    <div class="lg:col-span-4 flex justify-center">
+                        <div class="w-56 h-56 rounded-full bg-gradient-to-br from-amber-400 to-amber-600 p-1.5 shadow-2xl relative animate-pulse-glow">
+                            <div class="w-full h-full rounded-full bg-slate-900 border-4 border-dashed border-amber-300 flex flex-col items-center justify-center text-center p-4">
+                                <span class="text-3xl mb-1">🇩🇿</span>
+                                <span class="text-[10px] font-extrabold uppercase tracking-widest text-amber-400">CONFORME À 100%</span>
+                                <span class="text-xs font-bold text-white leading-tight mt-1">Programme officiel Ministère Éducation</span>
+                                <div class="mt-2 pt-2 border-t border-slate-700 text-[9px] font-mono text-emerald-400">VALIDÉ 2026/2027</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 5. TIMELINE WEB TODAY / TOMORROW SD BOX -->
+    <section id="roadmap" class="py-16 bg-slate-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-2xl mx-auto mb-12">
+                <span class="px-3 py-1 rounded-full bg-blue-100 text-blue-700 text-xs font-bold uppercase tracking-wider">Évolution Technologique</span>
+                <h2 class="text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight mt-3">
+                    Aujourd'hui sur le Web, Demain chez votre buraliste
+                </h2>
+                <p class="text-slate-600 mt-2 text-sm">
+                    Accédez instantanément sur internet ou profitez prochainement de notre solution 100% hors-ligne.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-11 gap-6 items-center max-w-5xl mx-auto">
+                
+                <!-- WEB TODAY CARD -->
+                <div class="md:col-span-5 bg-white rounded-2xl p-6 sm:p-8 border-2 border-emerald-500 shadow-xl relative overflow-hidden">
+                    <div class="absolute top-0 right-0 bg-dzgreen text-white text-[10px] font-bold px-3 py-1 rounded-bl-xl uppercase tracking-wider">
+                        DISPONIBLE MAINTENANT
+                    </div>
+                    <div class="w-12 h-12 rounded-xl bg-emerald-100 text-dzgreen flex items-center justify-center mb-4">
+                        <i data-lucide="globe" class="w-6 h-6"></i>
+                    </div>
+                    <span class="text-xs font-mono font-bold text-dzgreen uppercase tracking-wider">PHASE 1 : WEB TODAY</span>
+                    <h3 class="text-xl font-extrabold text-slate-900 mt-1 mb-3">Accès Web 24/7 Direct</h3>
+                    <p class="text-xs text-slate-600 leading-relaxed mb-6">
+                        Utilisez KITABIDZ PROF immédiatement depuis n'importe quel ordinateur, tablette ou smartphone sans aucune installation.
+                    </p>
+                    <ul class="text-xs space-y-2.5 text-slate-700 mb-6 font-medium">
+                        <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-dzgreen"></i> Accès instantané à kitabidz-study-pro.base44.app</li>
+                        <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-dzgreen"></i> Gratuit et accessible 24/7</li>
+                        <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-dzgreen"></i> Mises à jour en temps réel des cours</li>
+                    </ul>
+                    <a href="https://kitabidz-study-pro.base44.app" target="_blank" class="w-full py-3 bg-dzgreen hover:bg-dzgreen-dark text-white text-xs font-bold rounded-xl text-center block transition shadow-md">
+                        Lancer l'application Web ➔
+                    </a>
+                </div>
+
+                <!-- ARROW TRANSITION INTERACTIVE -->
+                <div class="md:col-span-1 flex justify-center py-2 md:py-0">
+                    <div class="w-12 h-12 rounded-full bg-slate-200 text-slate-600 flex items-center justify-center shadow-inner">
+                        <i data-lucide="arrow-right" class="w-6 h-6 hidden md:block"></i>
+                        <i data-lucide="arrow-down" class="w-6 h-6 md:hidden"></i>
+                    </div>
+                </div>
+
+                <!-- TOMORROW SD BOX CARD -->
+                <div class="md:col-span-5 bg-gradient-to-br from-slate-900 to-slate-950 text-white rounded-2xl p-6 sm:p-8 border border-slate-800 shadow-xl relative overflow-hidden">
+                    <div class="absolute top-0 right-0 bg-amber-500 text-slate-950 text-[10px] font-bold px-3 py-1 rounded-bl-xl uppercase tracking-wider">
+                        PROCHAINEMENT
+                    </div>
+                    <div class="w-12 h-12 rounded-xl bg-amber-500/20 text-amber-400 flex items-center justify-center mb-4 border border-amber-500/30">
+                        <i data-lucide="hard-drive" class="w-6 h-6"></i>
+                    </div>
+                    <span class="text-xs font-mono font-bold text-amber-400 uppercase tracking-wider">PHASE 2 : HORS-LIGNE</span>
+                    <h3 class="text-xl font-extrabold text-white mt-1 mb-3">Boîtier SD 64GB Sans Internet</h3>
+                    <p class="text-xs text-slate-400 leading-relaxed mb-6">
+                        Une carte SD préchargée contenant l'intégralité des 12 niveaux scolaires avec l'IA embarquée pour fonctionner sans connexion internet.
+                    </p>
+                    <ul class="text-xs space-y-2.5 text-slate-300 mb-6 font-medium">
+                        <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-amber-400"></i> Disponible chez votre buraliste local</li>
+                        <li class="flex items-center gap-2"><i data-lucide="truck" class="w-4 h-4 text-amber-400"></i> Livraison Pro & Université dans les 58 Wilayas</li>
+                        <li class="flex items-center gap-2"><i data-lucide="wifi-off" class="w-4 h-4 text-amber-400"></i> Fonctionne à 100% sans connexion internet</li>
+                    </ul>
+                    <button onclick="alert('Réservation bientôt disponible ! Accédez en attendant à la version web gratuite.')" class="w-full py-3 bg-slate-800 hover:bg-slate-700 text-amber-400 border border-slate-700 text-xs font-bold rounded-xl text-center block transition">
+                        Précommander le Kit SD
+                    </button>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- 6. FINAL CTA SECTION -->
+    <section class="py-20 gradient-dz text-white relative overflow-hidden">
+        <div class="max-w-5xl mx-auto px-4 text-center relative z-10">
+            <div class="w-16 h-16 rounded-2xl bg-white/10 backdrop-blur border border-white/20 flex items-center justify-center mx-auto mb-6 text-amber-300">
+                <i data-lucide="sparkles" class="w-8 h-8"></i>
+            </div>
+            <h2 class="text-3xl sm:text-5xl font-extrabold tracking-tight mb-4">
+                Prêt à simplifier les devoirs de votre enfant ?
+            </h2>
+            <p class="text-emerald-100 text-base sm:text-lg max-w-2xl mx-auto mb-8">
+                Accédez gratuitement dès maintenant à la seule application conforme à 100% au manuel scolaire algérien 2026/2027.
+            </p>
+
+            <div class="flex flex-col sm:flex-row justify-center items-center gap-4 mb-8">
+                <a href="https://kitabidz-study-pro.base44.app" target="_blank" class="w-full sm:w-auto px-10 py-4 rounded-xl bg-white text-dzgreen hover:bg-emerald-50 font-extrabold text-base shadow-2xl hover:scale-105 transition flex items-center justify-center gap-3">
+                    <span>Essayez maintenant sur kitabidz-study-pro.base44.app</span>
+                    <i data-lucide="arrow-right" class="w-5 h-5"></i>
+                </a>
+            </div>
+
+            <div class="flex flex-wrap justify-center items-center gap-6 text-xs text-emerald-100 font-medium">
+                <span class="flex items-center gap-1.5"><i data-lucide="check-circle" class="w-4 h-4 text-amber-300"></i> Testez gratuitement</span>
+                <span class="flex items-center gap-1.5"><i data-lucide="check-circle" class="w-4 h-4 text-amber-300"></i> Sans engagement</span>
+                <span class="flex items-center gap-1.5"><i data-lucide="check-circle" class="w-4 h-4 text-amber-300"></i> 100% Conforme au Manuel Scolaire</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="bg-slate-950 text-slate-400 py-12 border-t border-slate-900 text-xs">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row justify-between items-center gap-6">
+                <div class="flex items-center gap-3">
+                    <div class="w-8 h-8 rounded-lg bg-dzgreen text-white flex items-center justify-center font-bold">K</div>
+                    <span class="text-slate-200 font-bold text-sm">KITABIDZ PROF 2026/2027</span>
+                </div>
+                <div class="flex gap-6">
+                    <a href="https://kitabidz-study-pro.base44.app" target="_blank" class="hover:text-white transition">Application Web</a>
+                    <a href="#niveaux" class="hover:text-white transition">12 Niveaux</a>
+                    <a href="#conformite" class="hover:text-white transition">Conformité Ministère</a>
+                </div>
+                <div class="text-slate-500">
+                    © 2026 KITABIDZ PROF - Conçu pour les élèves et parents algériens 🇩🇿
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- MODAL EXERCICE TYPE (MODAL DYNAMIQUE) -->
+    <div id="exerciseModal" class="fixed inset-0 z-50 bg-slate-950/80 backdrop-blur-sm hidden items-center justify-center p-4">
+        <div class="bg-white rounded-2xl max-w-2xl w-full p-6 sm:p-8 shadow-2xl relative overflow-hidden border border-slate-100">
+            <button onclick="closeExerciseModal()" class="absolute top-4 right-4 p-2 text-slate-400 hover:text-slate-700 rounded-lg">
+                <i data-lucide="x" class="w-6 h-6"></i>
+            </button>
+            <div class="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-dzgreen mb-2">
+                <span class="text-lg">🇩🇿</span> Page Officielle du Manuel Scolaire
+            </div>
+            <h3 id="modalTitle" class="text-xl font-bold text-slate-900 mb-4">Exercice Type - 1AP</h3>
+            
+            <div class="bg-emerald-50 rounded-xl p-4 border border-emerald-100 mb-4">
+                <p class="text-xs font-mono text-emerald-800 mb-1">MANUEL D'ARABE - PAGE 42 (EXERCICE 3)</p>
+                <p id="modalExerciseText" class="text-slate-800 text-sm font-semibold dir-rtl font-arabic text-right">
+                    « رتب الحروف التالية لتكون كلمة مفيدة: (ك - ت - ا - ب) »
+                </p>
+            </div>
+
+            <div class="bg-slate-900 text-white rounded-xl p-4 mb-6">
+                <p class="text-xs text-amber-400 font-bold mb-1">EXPLICATION DE KITABIDZ PROF (DARIJA) :</p>
+                <p id="modalSolutionText" class="text-xs text-slate-300 leading-relaxed">
+                    « يا شاطر، نجمعوا الحروف مع بعض: الحرف الأول ك، بعدو ت، وبعدو ا، وأخيراً ب. تولي الكلمة: كِتَابٌ. »
+                </p>
+            </div>
+
+            <div class="flex justify-end gap-3">
+                <button onclick="closeExerciseModal()" class="px-4 py-2 bg-slate-200 text-slate-700 font-semibold text-xs rounded-xl">Fermer</button>
+                <a href="https://kitabidz-study-pro.base44.app" target="_blank" class="px-5 py-2 bg-dzgreen text-white font-bold text-xs rounded-xl flex items-center gap-2">
+                    <span>Ouvrir l'App Live</span>
+                    <i data-lucide="external-link" class="w-3.5 h-3.5"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- JAVASCRIPT LOGIC -->
+    <script>
+        // Data for the 12 Algerian Levels
+        const levelsData = {
+            '1AP': {
+                title: 'Programme 1ère Année Primaire (1AP)',
+                subjects: [
+                    { name: 'اللغة العربية (Arabe)', desc: 'Apprentissage des lettres, lecture initiale et vocabulaire du manuel officiel.', icon: 'book-open', color: 'emerald' },
+                    { name: 'الرياضيات (Maths)', desc: 'Dénombrement de 1 à 20, formes géométriques de base et opérations simples.', icon: 'calculator', color: 'amber' },
+                    { name: 'التربية الإسلامية (Éducation Islamique)', desc: 'Sourates courtes, civisme et valeurs morales.', icon: 'heart', color: 'blue' }
+                ],
+                sampleEx: {
+                    title: 'Exercice Type - 1AP Arabe',
+                    text: '« رتب الحروف التالية لتكون كلمة مفيدة: (ك - ت - ا - ب) »',
+                    solution: '« يا شاطر، نجمعوا الحروف مع بعض: الحرف الأول ك، بعدو ت، وبعدو ا، وأخيراً ب. تولي الكلمة: كِتَابٌ. »'
+                }
+            },
+            '2AP': {
+                title: 'Programme 2ème Année Primaire (2AP)',
+                subjects: [
+                    { name: 'اللغة العربية (Arabe)', desc: 'Lecture fluide de textes et dictée préparée.', icon: 'book-open', color: 'emerald' },
+                    { name: 'الرياضيات (Maths)', desc: 'Addition, soustraction posée et unités de mesure.', icon: 'calculator', color: 'amber' },
+                    { name: 'التربية العلمية (Sciences)', desc: 'Les sens, la respiration et la croissance des plantes.', icon: 'microscope', color: 'blue' }
+                ],
+                sampleEx: {
+                    title: 'Exercice Type - 2AP Maths',
+                    text: '« احسب المجموع التالي: 25 + 14 = ? »',
+                    solution: '« نجمعوا الآحاد مع الآحاد (5 + 4 = 9) والعشرات مع العشرات (2 + 1 = 3)، النتيجة هي 39. »'
+                }
+            },
+            '3AP': {
+                title: 'Programme 3ème Année Primaire (3AP)',
+                subjects: [
+                    { name: 'اللغة العربية (Arabe)', desc: 'Grammaire de base (الفعل والفاعل) et conjugaison.', icon: 'book-open', color: 'emerald' },
+                    { name: 'الرياضيات (Maths)', desc: 'Introduction à la multiplication et géométrie.', icon: 'calculator', color: 'amber' },
+                    { name: 'Français', desc: 'Introduction de la langue française, alphabet et vocabulaire basique.', icon: 'languages', color: 'blue' }
+                ],
+                sampleEx: {
+                    title: 'Exercice Type - 3AP Français',
+                    text: '« Complète avec le pronom sujet : ... mange une pomme. (Il / Ils) »',
+                    solution: '« Le verbe est "mange" au singulier. Donc on choisit le pronom "Il". La phrase devient : Il mange une pomme. »'
+                }
+            },
+            '4AP': {
+                title: 'Programme 4ème Année Primaire (4AP)',
+                subjects: [
+                    { name: 'الرياضيات (Maths)', desc: 'Fractions simples, division et résolution de problèmes.', icon: 'calculator', color: 'amber' },
+                    { name: 'اللغة العربية (Arabe)', desc: 'Grammaire avancée, orthographe et expression écrite.', icon: 'book-open', color: 'emerald' },
+                    { name: 'التاريخ والجغرافيا (Histoire-Géo)', desc: 'Histoire de l’Algérie et géographie nationale.', icon: 'globe', color: 'blue' }
+                ],
+                sampleEx: {
+                    title: 'Exercice Type - 4AP Maths',
+                    text: '« Calcule la somme des fractions : 3/4 + 1/4 = ? »',
+                    solution: '« Les dénominateurs sont identiques (4). On additionne les numérateurs : 3 + 1 = 4. Donc 4/4 = 1. »'
+                }
+            },
+            '5AP': {
+                title: 'Programme 5ème Année Primaire (5AP)',
+                subjects: [
+                    { name: 'Préparation Examen Fin de Cycle', desc: 'Révisions globales et sujets types.', icon: 'award', color: 'emerald' },
+                    { name: 'الرياضيات (Maths)', desc: 'Nombres décimaux, pourcentages et géométrie dans l’espace.', icon: 'calculator', color: 'amber' },
+                    { name: 'Français & Anglais', desc: 'Consolidation des compétences linguistiques.', icon: 'languages', color: 'blue' }
+                ],
+                sampleEx: {
+                    title: 'Exercice Type - 5AP Problème',
+                    text: '« Un terrain rectangulaire a une longueur de 12m et une largeur de 5m. Calcule sa surface. »',
+                    solution: '« La surface du rectangle = Longueur x Largeur. Donc : 12 x 5 = 60 m². »'
+                }
+            },
+            '1AM': {
+                title: 'Programme 1ère Année Moyen (1AM)',
+                subjects: [
+                    { name: 'العلوم الفيزيائية (Physique)', desc: 'Matière, états physiques et circuits électriques.', icon: 'zap', color: 'emerald' },
+                    { name: 'علوم الطبيعة والحياة (SVT)', desc: 'Nutrition chez l’homme et respiration.', icon: 'leaf', color: 'amber' },
+                    { name: 'الرياضيات (Maths)', desc: 'Équations simples et géométrie plane.', icon: 'calculator', color: 'blue' }
+                ],
+                sampleEx: {
+                    title: 'Exercice Type - 1AM Physique',
+                    text: '« Quel est l’instrument de mesure du volume d’un liquide ? »',
+                    solution: '« On utilise une éprouvette graduée en lisant le niveau au bas du ménisque. »'
+                }
+            },
+            '2AM': {
+                title: 'Programme 2ème Année Moyen (2AM)',
+                subjects: [
+                    { name: 'اللغة العربية (Arabe)', desc: 'Étude de textes littéraires et rhétorique.', icon: 'book-open', color: 'emerald' },
+                    { name: 'العلوم الفيزيائية (Physique)', desc: 'Transformations physiques et chimiques.', icon: 'flask-conical', color: 'amber' },
+                    { name: 'Anglais', desc: 'Grammaire et rédaction de textes descriptifs.', icon: 'languages', color: 'blue' }
+                ],
+                sampleEx: {
+                    title: 'Exercice Type - 2AM Physique',
+                    text: '« L’évaporation de l’eau est-elle une transformation physique ou chimique ? »',
+                    solution: '« C’est une transformation physique car l’eau change d’état sans changer de nature chimique. »'
+                }
+            },
+            '3AM': {
+                title: 'Programme 3ème Année Moyen (3AM)',
+                subjects: [
+                    { name: 'الرياضيات (Maths)', desc: 'Théorème de Pythagore, puissances et calcul littéral.', icon: 'calculator', color: 'emerald' },
+                    { name: 'علوم الطبيعة (SVT)', desc: 'Tectonique des plaques et séismes.', icon: 'globe-2', color: 'amber' },
+                    { name: 'التاريخ (Histoire)', desc: 'L’Algérie à l’époque ottomane.', icon: 'landmark', color: 'blue' }
+                ],
+                sampleEx: {
+                    title: 'Exercice Type - 3AM SVT',
+                    text: '« Quelle est la cause principale des séismes selon le manuel ? »',
+                    solution: '« C’est la rupture soudaine des roches sous l’effet des forces de compression tectoniques. »'
+                }
+            },
+            '4AM': {
+                title: 'Programme 4ème Année Moyen - BEM 2027 (4AM)',
+                subjects: [
+                    { name: 'Préparation Intensive BEM', desc: 'Corrigés des sujets officiels du BEM.', icon: 'award', color: 'emerald' },
+                    { name: 'الرياضيات (Maths BEM)', desc: 'PGCD, Thales, Fonctions affines et trigonométrie.', icon: 'calculator', color: 'amber' },
+                    { name: 'الفيزياء (Physique BEM)', desc: 'Mécanique, forces et courant alternatif.', icon: 'atom', color: 'blue' }
+                ],
+                sampleEx: {
+                    title: 'Exercice Type - 4AM BEM Maths',
+                    text: '« Calcule le PGCD des nombres 220 et 140. »',
+                    solution: '« En utilisant l’algorithme d’Euclide : 220 = 140x1 + 80, puis 140 = 80x1 + 60, 80 = 60x1 + 20, 60 = 20x3 + 0. Le PGCD est 20. »'
+                }
+            },
+            '1AS': {
+                title: 'Programme 1ère Année Secondaire (1AS)',
+                subjects: [
+                    { name: 'Tronc Commun Sciences', desc: 'Mathématiques avancées, Chimie et Physique.', icon: 'binary', color: 'emerald' },
+                    { name: 'Tronc Commun Lettres', desc: 'Littérature arabe, Philosophie et Langues.', icon: 'feather', color: 'amber' },
+                    { name: 'Informatique', desc: 'Algorithmique et bureautique.', icon: 'cpu', color: 'blue' }
+                ],
+                sampleEx: {
+                    title: 'Exercice Type - 1AS Maths',
+                    text: '« Résoudre dans R l’équation : 2x + 5 = 11 »',
+                    solution: '« 2x = 11 - 5 => 2x = 6 => x = 3. La solution est S = {3}. »'
+                }
+            },
+            '2AS': {
+                title: 'Programme 2ème Année Secondaire (2AS)',
+                subjects: [
+                    { name: 'Mathématiques & Maths-Tech', desc: 'Analyse de fonctions, dérivation et limites.', icon: 'calculator', color: 'emerald' },
+                    { name: 'Sciences Expérimentales', desc: 'Génétique et métabolisme.', icon: 'dna', color: 'amber' },
+                    { name: 'Gestion & Économie', desc: 'Comptabilité et droit.', icon: 'bar-chart-3', color: 'blue' }
+                ],
+                sampleEx: {
+                    title: 'Exercice Type - 2AS Maths',
+                    text: '« Calcule la dérivée de f(x) = 3x² + 4x - 1 »',
+                    solution: '« f’(x) = 3(2x) + 4 = 6x + 4. »'
+                }
+            },
+            '3AS': {
+                title: 'Programme 3ème Année Secondaire - BAC 2027 (3AS)',
+                subjects: [
+                    { name: 'Préparation Spéciale BAC 2027', desc: 'Sujets corrigés des annales du Baccalauréat.', icon: 'graduation-cap', color: 'emerald' },
+                    { name: 'Mathématiques BAC', desc: 'Fonctions exponentielles, logarithmes et intégrales.', icon: 'sigma', color: 'amber' },
+                    { name: 'الفيزياء والكيماء (Physique-Chimie)', desc: 'Cinétique chimique et nucléaire.', icon: 'atom', color: 'blue' }
+                ],
+                sampleEx: {
+                    title: 'Exercice Type - 3AS BAC Maths',
+                    text: '« Quelle est la dérivée de la fonction f(x) = e^(2x) ? »',
+                    solution: '« f’(x) = 2 * e^(2x). »'
+                }
+            }
+        };
+
+        let currentLevel = '1AP';
+        let currentExerciseSpeech = "";
+
+        // Initialize Level Display
+        function selectLevel(levelKey) {
+            currentLevel = levelKey;
+            const data = levelsData[levelKey];
+
+            // Update UI buttons styling
+            document.querySelectorAll('.level-btn').forEach(btn => {
+                btn.className = "level-btn p-4 rounded-xl border-2 border-slate-200 bg-white hover:border-slate-300 text-left transition group";
+            });
+
+            const activeBtn = document.getElementById(`btn-${levelKey}`);
+            if (activeBtn) {
+                activeBtn.className = "level-btn active p-4 rounded-xl border-2 border-dzgreen bg-emerald-50 text-left transition relative overflow-hidden group";
+            }
+
+            // Update Panel content
+            document.getElementById('displayLevelTag').textContent = `Niveau Sélectionné : ${levelKey}`;
+            document.getElementById('displayLevelTitle').textContent = data.title;
+
+            // Render Subjects
+            const subjectsContainer = document.getElementById('subjectsContainer');
+            subjectsContainer.innerHTML = data.subjects.map(s => `
+                <div class="bg-slate-800/80 p-4 rounded-xl border border-slate-700">
+                    <div class="w-8 h-8 rounded-lg bg-emerald-500/20 text-emerald-400 flex items-center justify-center mb-3">
+                        <i data-lucide="${s.icon}" class="w-4 h-4"></i>
+                    </div>
+                    <h4 class="font-bold text-white text-sm mb-1">${s.name}</h4>
+                    <p class="text-xs text-slate-400">${s.desc}</p>
+                </div>
+            `).join('');
+
+            lucide.createIcons();
+        }
+
+        // Open Exercise Modal
+        function openExerciseModal() {
+            const data = levelsData[currentLevel].sampleEx;
+            document.getElementById('modalTitle').textContent = data.title;
+            document.getElementById('modalExerciseText').textContent = data.text;
+            document.getElementById('modalSolutionText').textContent = data.solution;
+            document.getElementById('exerciseModal').classList.remove('hidden');
+            document.getElementById('exerciseModal').classList.add('flex');
+        }
+
+        function closeExerciseModal() {
+            document.getElementById('exerciseModal').classList.add('hidden');
+            document.getElementById('exerciseModal').classList.remove('flex');
+        }
+
+        // Drag and Drop Simulator Handling
+        function triggerFileUpload() {
+            document.getElementById('fileInput').click();
+        }
+
+        function handleFileSelect(event) {
+            const file = event.target.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    showUploadedImage(e.target.result);
+                    processSimulation("Fichier utilisateur scanné", "3/4 + 1/4 = ?", "En utilisant les règles de la page 45 du livre de mathématiques 4AP : Les dénominateurs sont égaux à 4. On additionne les numérateurs 3 et 1 pour obtenir 4/4 soit 1.");
+                }
+                reader.readAsDataURL(file);
+            }
+        }
+
+        function showUploadedImage(src) {
+            document.getElementById('uploadedImg').src = src;
+            document.getElementById('imagePreview').classList.remove('hidden');
+            document.getElementById('scannerLine').classList.remove('hidden');
+        }
+
+        function loadSampleExercise(type) {
+            if (type === 'math') {
+                showUploadedImage('https://images.unsplash.com/photo-1635070041078-e363dbe005cb?q=80&w=800&auto=format&fit=crop');
+                processSimulation("Livre de Mathématiques - 4ème Année Primaire (p. 45)", "Calcule l'opération suivante : 3/4 + 1/4 = ?", "يا شاطر، عندنا نفس المقام اللي هو 4. نجمعوا البسط الأول 3 مع البسط الثاني 1 نتحصلوا على 4 على 4، وتساوي 1.");
+            } else {
+                showUploadedImage('https://images.unsplash.com/photo-1456513080510-7bf3a84b82f8?q=80&w=800&auto=format&fit=crop');
+                processSimulation("Livre d'Arabe - 2ème Année Moyen (p. 18)", "استخرج الفاعل من الجملة: (كتبَ التلميذُ الدرسَ)", "الفاعل في هذه الجملة هو كلمة 'التلميذُ' لأنه هو من قام بفعل الكتابة وهو مرفوع بالضمة.");
+            }
+        }
+
+        function processSimulation(bookName, exText, speechText) {
+            const badge = document.getElementById('analysisBadge');
+            badge.className = "text-xs font-bold text-amber-400 flex items-center gap-1 animate-pulse";
+            badge.innerHTML = `<i data-lucide="loader" class="w-3.5 h-3.5 animate-spin"></i> Analyse en cours...`;
+
+            document.getElementById('detectedBookTitle').textContent = "Détection du manuel officiel...";
+            document.getElementById('detectedExerciseText').textContent = "Recherche dans la base de données du Ministère 2026/2027...";
+
+            setTimeout(() => {
+                badge.className = "text-xs font-bold text-emerald-400 flex items-center gap-1";
+                badge.innerHTML = `<i data-lucide="check-circle-2" class="w-3.5 h-3.5"></i> Exercice Détecté (100% Conforme)`;
+
+                document.getElementById('detectedBookTitle').textContent = bookName;
+                document.getElementById('detectedExerciseText').textContent = `Exercice : "${exText}"`;
+
+                document.getElementById('solutionSteps').innerHTML = `
+                    <div class="p-2.5 rounded bg-slate-800 border border-slate-700 flex items-center gap-2">
+                        <span class="w-5 h-5 rounded-full bg-emerald-500/20 text-emerald-400 flex items-center justify-center font-bold text-[10px]">1</span>
+                        <span>Corrigé conforme à la page officielle du livre.</span>
+                    </div>
+                    <div class="p-2.5 rounded bg-slate-800 border border-slate-700 flex items-center gap-2">
+                        <span class="w-5 h-5 rounded-full bg-emerald-500/20 text-emerald-400 flex items-center justify-center font-bold text-[10px]">2</span>
+                        <span>Explication audio en Darija pédagogique prête.</span>
+                    </div>
+                `;
+
+                currentExerciseSpeech = speechText;
+
+                const playBtn = document.getElementById('playAudioBtn');
+                playBtn.disabled = false;
+                playBtn.className = "w-full py-3 px-4 bg-emerald-600 hover:bg-emerald-500 text-white font-bold rounded-xl shadow-lg flex items-center justify-center gap-2 transition cursor-pointer";
+                
+                document.getElementById('scannerLine').classList.add('hidden');
+                lucide.createIcons();
+            }, 1500);
+        }
+
+        // Web Speech API for Simulated Audio Playback (fr-DZ / ar)
+        function playSpeechExplanation() {
+            if ('speechSynthesis' in window) {
+                window.speechSynthesis.cancel(); // Stop ongoing speech
+                const utterance = new SpeechSynthesisUtterance(currentExerciseSpeech || "Explication audio du livre scolaire algérien.");
+                utterance.lang = 'ar-DZ'; // Algerian Arabic locale if supported or fallback
+                utterance.rate = 0.9;
+                
+                const btnText = document.getElementById('audioBtnText');
+                btnText.textContent = "Lecture en cours...";
+
+                utterance.onend = function() {
+                    btnText.textContent = "Réécouter l'explication vocale";
+                };
+
+                window.speechSynthesis.speak(utterance);
+            } else {
+                alert("La synthèse vocale n'est pas supportée sur ce navigateur, mais l'explication texte est disponible.");
+            }
+        }
+
+        // On Page Load Initialization
+        window.addEventListener('DOMContentLoaded', () => {
+            selectLevel('1AP');
+            lucide.createIcons();
+        });
+    </script>
+</body>
+</html>
